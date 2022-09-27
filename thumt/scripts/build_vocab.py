@@ -9,6 +9,8 @@ from __future__ import print_function
 import argparse
 import collections
 
+from tqdm import tqdm
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Create vocabulary")
@@ -28,7 +30,7 @@ def count_words(filename):
     counter = collections.Counter()
 
     with open(filename, "rb") as fd:
-        for line in fd:
+        for line in tqdm(fd,desc='count_words'):
             words = line.strip().split()
             counter.update(words)
 

@@ -8,6 +8,7 @@ from __future__ import print_function
 
 import argparse
 import numpy
+from tqdm import tqdm
 
 
 def parseargs():
@@ -37,7 +38,7 @@ def main(args):
 
     newstream = [open(item + suffix, "wb") for item in name]
 
-    for idx in indices.tolist():
+    for idx in tqdm(indices.tolist()) :
         lines = [item[idx] for item in data]
 
         for line, fd in zip(lines, newstream):
